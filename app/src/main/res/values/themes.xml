@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Only used for the window background shown before Compose renders; all real UI theming is done in ui/theme/Theme.kt.
+         A platform theme (dark variant in values-night) rather than Material Components' DayNight theme, so that library
+         and its resources don't have to ship in the APK just for a pre-Compose window background. -->
+    <style name="Theme.DeviceInfo" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+
+    <!-- Shown by MainActivity only, via installSplashScreen(); hands off to Theme.DeviceInfo once the first frame is ready. -->
+    <style name="Theme.DeviceInfo.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.DeviceInfo</item>
+    </style>
+</resources>
